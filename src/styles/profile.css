@@ -1,0 +1,21 @@
+.profile-img-info{
+    display: flex;
+}
+.profile{
+    padding-top: 2%;
+    background-color: #F4EEFF;
+    height: 80vh;
+}
+
+.profile-img{
+    border: 2px dashed #424874;
+    padding: 1%;
+}
+
+.profile-img img{
+    width: 200px;
+}
+
+.profile-info{
+    padding: 0 5%
+}

@@ -1,0 +1,22 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+ul{
+    list-style: none;}
+
+.wrapper{
+    width: 85%;
+    margin: 0 auto;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* https://colorhunt.co/palette/f4eeffdcd6f7a6b1e1424874 */

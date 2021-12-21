@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Titillium+Web:wght@300&display=swap');
+
+.welcome{
+    background:  linear-gradient(rgba(0,0,0,0.76), rgba(0,0,0,0.65)), url('../media/img/giphy.gif');
+    height: 85vh;
+    color: white;
+   
+
+}
+
+.welcome h1{
+    font-family: 'Mochiy Pop P One', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 100px;
+    color: white;
+-webkit-text-stroke: 0.1px #424874;
+}
+
+.welcome-flex{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
