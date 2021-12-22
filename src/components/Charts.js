@@ -4,6 +4,8 @@ import api from '../api';
 import chart from '../media/img/chart.png'
 import '../styles/charts.css'
 import { Context } from '../UseContext'
+import ScrGraph from './ScrGraph';
+
 
 
 
@@ -41,7 +43,7 @@ function Charts() {
             });
     }, [])
 
-    function buildGraph(event) {
+    async function buildGraph(event) {
         event.preventDefault()
         const data = {
             name: fileGraph,
@@ -49,21 +51,62 @@ function Charts() {
             y: y,
             type: typeG
         }
-        api
-            .post("/app/graph/", data, {
+        try {
+            await api.post("/app/graph/", data, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "Authorization": `JWT ${token}`
                 }
             })
-            .then((res) => {
-                console.log(res)
-                setDataFrame(res.data)
-                // GetIframe()
-            })
-            .catch((e) => console.log(e));
 
+            let df = await api.get("/app/graph/", {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "Authorization": `JWT ${token}`
+                }
+            })
+            console.log(df.data)
+            setDataFrame(df.data)
+
+        } catch (error) {
+            console.log(error)
+        }
     }
+    // async function buildGraph(event) {
+    //     event.preventDefault()
+    //     const data = {
+    //         name: fileGraph,
+    //         x: x,
+    //         y: y,
+    //         type: typeG
+    //     }
+    //     await api
+    //         .post("/app/graph/", data, {
+    //             headers: {
+    //                 "Content-Type": "multipart/form-data",
+    //                 "Authorization": `JWT ${token}`
+    //             }
+    //         })
+    //         .then((res) => {
+    //             console.log("alright")
+    //             // GetIframe()
+    //         })
+    //         .catch((e) => console.log(e));
+    //     api
+    //         .get("/app/graph/", {
+    //             headers: {
+    //                 "Content-Type": "multipart/form-data",
+    //                 "Authorization": `JWT ${token}`
+    //             }
+    //         })
+    //         .then((res) => {
+    //             console.log(res)
+    //             setDataFrame(res.data)
+    //             // GetIframe()
+    //         })
+    //         .catch((e) => console.log(e));
+
+    // }
 
     function chooseFile(event) {
         event.preventDefault()
@@ -86,8 +129,6 @@ function Charts() {
 
 
     function sendFile(event) {
-        console.log("!!!!!!!!!!!!!!!!!!!!")
-        event.preventDefault()
         const data = new FormData();
         let token = localStorage.JWT
         file && data.append('file', file[0])
@@ -99,7 +140,7 @@ function Charts() {
                 }
             })
             .then((res) => {
-                setColumns(res.data)
+                console.log("file uploaded")
             })
             .catch((e) => console.log(e));
 
@@ -162,8 +203,11 @@ function Charts() {
                     <button onClick={buildGraph}>Построить график</button>
                 </div>
 
+
+                {dataFrame && <ScrGraph data={dataFrame} />}
+                {/* 
                 {dataFrame &&
-                    <div dangerouslySetInnerHTML={{ __html: dataFrame }}></div>}
+                    <div dangerouslySetInnerHTML={{ __html: dataFrame }}></div>} */}
 
             </div>
         </div>
