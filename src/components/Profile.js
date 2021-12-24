@@ -1,6 +1,8 @@
 import React from 'react'
 import '../styles/profile.css'
+import UploadFile from './UploadFile'
 function Profile() {
+
     return (
         <div className='profile'>
             <div className="wrapper">
@@ -10,10 +12,15 @@ function Profile() {
                     </div>
                     <div className='profile-info'>
                         <h1>Yollollay</h1>
-                        <h4>Zhamila Tmirkhan</h4>
+                        <h4>Zhamila Temirkhan</h4>
                     </div>
-                </div>
 
+
+                </div>
+                <div>
+                    <h1>Загрузите файл для дальнейших действий</h1>
+                    <UploadFile />
+                </div>
             </div>
         </div>
     )

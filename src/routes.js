@@ -1,10 +1,11 @@
 import SignIn from "./components/Auth/SignIn"
 import SignUp from "./components/Auth/SignUp"
+import AutoMl from "./components/AutoMl"
 import Charts from "./components/Charts"
 import Profile from "./components/Profile"
 
 import Welcome from "./components/Welcome"
-import { SIGNIN_ROUTE, SIGNUP_ROUTE, WELCOME_ROUTE, PROFILE_ROUTE, CHARTS_ROUTE } from './utils/utils'
+import { SIGNIN_ROUTE, SIGNUP_ROUTE, WELCOME_ROUTE, PROFILE_ROUTE, CHARTS_ROUTE, ML_ROUTE } from './utils/utils'
 
 export const publicRoutes = [
     {
@@ -39,5 +40,9 @@ export const privateRoutes = [
     {
         path: WELCOME_ROUTE,
         Component: Welcome
+    },
+    {
+        path: ML_ROUTE,
+        Component: AutoMl
     }
 ]

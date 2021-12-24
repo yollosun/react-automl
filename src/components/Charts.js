@@ -10,7 +10,6 @@ import ScrGraph from './ScrGraph';
 
 
 function Charts() {
-    const [file, setFile] = useState()
     const [columns, setColumns] = useState()
     const [fileGraph, setFileGraph] = useState()
     const [typeG, setTypeG] = useState('scatter');
@@ -20,13 +19,6 @@ function Charts() {
     const context = useContext(Context)
     const navigate = useNavigate();
     let token = localStorage.JWT
-
-    // function GetIframe() {
-    //     const iframe = useRef("graph")
-    //     iframe.contentDocument = dataFrame
-
-
-    // }
 
     useEffect(() => {
         api
@@ -72,41 +64,6 @@ function Charts() {
             console.log(error)
         }
     }
-    // async function buildGraph(event) {
-    //     event.preventDefault()
-    //     const data = {
-    //         name: fileGraph,
-    //         x: x,
-    //         y: y,
-    //         type: typeG
-    //     }
-    //     await api
-    //         .post("/app/graph/", data, {
-    //             headers: {
-    //                 "Content-Type": "multipart/form-data",
-    //                 "Authorization": `JWT ${token}`
-    //             }
-    //         })
-    //         .then((res) => {
-    //             console.log("alright")
-    //             // GetIframe()
-    //         })
-    //         .catch((e) => console.log(e));
-    //     api
-    //         .get("/app/graph/", {
-    //             headers: {
-    //                 "Content-Type": "multipart/form-data",
-    //                 "Authorization": `JWT ${token}`
-    //             }
-    //         })
-    //         .then((res) => {
-    //             console.log(res)
-    //             setDataFrame(res.data)
-    //             // GetIframe()
-    //         })
-    //         .catch((e) => console.log(e));
-
-    // }
 
     function chooseFile(event) {
         event.preventDefault()
@@ -128,25 +85,6 @@ function Charts() {
     }
 
 
-    function sendFile(event) {
-        const data = new FormData();
-        let token = localStorage.JWT
-        file && data.append('file', file[0])
-        api
-            .post("/app/upload/", data, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                    "Authorization": `JWT ${token}`
-                }
-            })
-            .then((res) => {
-                console.log("file uploaded")
-            })
-            .catch((e) => console.log(e));
-
-    };
-    console.log("!!!!!!!!!!!!!")
-    console.log(columns)
 
     return (
         <div className="charts-wrapper">
@@ -156,11 +94,6 @@ function Charts() {
                         <h1>Create a chart</h1>
                         <img src={chart} alt="chart" />
                     </div>
-                    {console.log(dataFrame)}
-                    <form >
-                        <input type="file" name='myFile' onChange={(e) => { setFile(e.target.files) }} />
-                        <input type="submit" name='submit' onClick={sendFile} />
-                    </form>
                     <h3>Выберите файл</h3>
                     <select name="chosen_file" id="chosen_file" onChange={(e) => { setFileGraph(e.target.value) }}>
                         {context.fileList.files && context.fileList.files.map((el) => {
@@ -215,3 +148,40 @@ function Charts() {
 }
 
 export default Charts
+
+
+// async function buildGraph(event) {
+    //     event.preventDefault()
+    //     const data = {
+    //         name: fileGraph,
+    //         x: x,
+    //         y: y,
+    //         type: typeG
+    //     }
+    //     await api
+    //         .post("/app/graph/", data, {
+    //             headers: {
+    //                 "Content-Type": "multipart/form-data",
+    //                 "Authorization": `JWT ${token}`
+    //             }
+    //         })
+    //         .then((res) => {
+    //             console.log("alright")
+    //             // GetIframe()
+    //         })
+    //         .catch((e) => console.log(e));
+    //     api
+    //         .get("/app/graph/", {
+    //             headers: {
+    //                 "Content-Type": "multipart/form-data",
+    //                 "Authorization": `JWT ${token}`
+    //             }
+    //         })
+    //         .then((res) => {
+    //             console.log(res)
+    //             setDataFrame(res.data)
+    //             // GetIframe()
+    //         })
+    //         .catch((e) => console.log(e));
+
+    // }

@@ -2,10 +2,8 @@ import React from 'react'
 import img from '../media/img/3d-hologram.png'
 import '../styles/header.css'
 import { Link, useNavigate } from 'react-router-dom'
-import sneg from '../media/img/sneg.png'
 import tree from '../media/img/tree.png'
-import redsneg from '../media/img/redsneg.png'
-import { useContext } from 'react'
+
 let newyear = []
 for (let i = 0; i < 20; i++) {
     newyear.push(
@@ -50,7 +48,7 @@ function Header() {
                                 <Link className="main-link" to="">Process</Link>
                                 <div className="dropdown-content">
                                     <Link to='/charts'>Charts</Link>
-                                    <Link to="#">Auto ML</Link>
+                                    <Link to="/ml">Auto ML</Link>
                                     <Link to="#">Network Planning</Link>
                                 </div>
                             </li>
